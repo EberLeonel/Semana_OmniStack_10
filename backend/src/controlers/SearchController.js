@@ -3,7 +3,7 @@ const parseStringAsArray = require('../utils/parseStringAsArray');
 
 module. exports = {
     async index(request, response) {
-        const { latitude, longitude, techs} = request.query;
+        const { latitude, longitude, techs } = request.query;
 
         const techsArray = parseStringAsArray(techs);
 
@@ -15,15 +15,16 @@ module. exports = {
                 $near: {
                     $geometry: {
                         type: 'Point',
-                        coordinates: [longitude, latitude],
+                        coordinates: [longitude, latitude]
                     },
                     $maxDistance: 10000
                 }
             }
         });
 
+        console.log(`> /search: ${devs.map(dev => dev.github_username)} results`);
 
-        return response.json({ devs });
+        return response.json({ devs })
     },
 
     async update(request, response) {
