@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://zh-2ns.anonymous.mobile.exp.direct/',
+  baseURL: "http://192.168.0.76:1717"
 });
 
 export default api;
